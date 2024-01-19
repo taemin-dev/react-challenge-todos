@@ -5,31 +5,34 @@ import Coin from "./routes/Coin";
 import Price from "./routes/Price";
 import Chart from "./routes/Chart";
 
-const router = createBrowserRouter([
-  {
-    path: `${process.env.PUBLIC_URL}/`,
-    element: <App />,
-    children: [
-      {
-        path: "",
-        element: <Coins />,
-      },
-      {
-        path: ":coinId",
-        element: <Coin />,
-        children: [
-          {
-            path: "price",
-            element: <Price />,
-          },
-          {
-            path: "chart",
-            element: <Chart />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          path: "",
+          element: <Coins />,
+        },
+        {
+          path: ":coinId",
+          element: <Coin />,
+          children: [
+            {
+              path: "price",
+              element: <Price />,
+            },
+            {
+              path: "chart",
+              element: <Chart />,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  { basename: process.env.PUBLIC_URL }
+);
 
 export default router;
