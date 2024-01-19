@@ -8,14 +8,14 @@ interface IPriceContext {
 
 function Price() {
   const { price } = useOutletContext<IPriceContext>();
-  const ath_date = new Date(price.quotes.USD.ath_date);
+  const ath_date = new Date(price?.quotes?.USD?.ath_date);
   return (
     <ApexChart
       type="bar"
       series={[
         {
           name: "Now",
-          data: [price.quotes.USD.price, price.quotes.USD.ath_price].map(
+          data: [price?.quotes?.USD?.price, price?.quotes?.USD?.ath_price].map(
             (price) => Math.floor(price)
           ),
         },

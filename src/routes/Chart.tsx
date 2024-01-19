@@ -40,8 +40,8 @@ function Chart() {
               data:
                 data?.map((price) => {
                   return {
-                    x: new Date(price.time_close),
-                    y: [price.open, price.high, price.low, price.close],
+                    x: new Date(price?.time_close),
+                    y: [price?.open, price?.high, price?.low, price?.close],
                   };
                 }) ?? [],
             },
