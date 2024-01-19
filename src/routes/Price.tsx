@@ -1,6 +1,8 @@
 import { useOutletContext } from "react-router-dom";
 import { IPriceData } from "./Coin";
 import ApexChart from "react-apexcharts";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 interface IPriceContext {
   price: IPriceData;
@@ -8,6 +10,7 @@ interface IPriceContext {
 
 function Price() {
   const { price } = useOutletContext<IPriceContext>();
+  const isDark = useRecoilValue(isDarkAtom);
   const ath_date = new Date(price?.quotes?.USD?.ath_date);
   return (
     <ApexChart
@@ -22,7 +25,7 @@ function Price() {
       ]}
       options={{
         theme: {
-          mode: "dark",
+          mode: isDark ? "dark" : "light",
         },
         chart: {
           type: "bar",
