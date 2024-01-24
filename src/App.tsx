@@ -1,8 +1,5 @@
-import { Outlet } from "react-router-dom";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { darkTheme, lightTheme } from "./theme";
-import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "./atoms";
+import { createGlobalStyle } from "styled-components";
+import ToDoList from "./components/ToDoList";
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -63,12 +60,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const isDark = useRecoilValue(isDarkAtom);
   return (
-    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+    <>
       <GlobalStyle />
-      <Outlet />
-    </ThemeProvider>
+      <ToDoList />
+    </>
   );
 }
 
